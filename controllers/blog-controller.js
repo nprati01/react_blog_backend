@@ -1,6 +1,6 @@
 const express = require('express')
 const { Blog } = require('../models')
-
+console.log(Blog)
 async function index(req,res,next) {
 	try {
     // get all blogs
@@ -11,7 +11,7 @@ async function index(req,res,next) {
   }
 };
 
-// PEOPLE CREATE ACTION
+// BLOG CREATE ACTION
 async function create(req,res,next) {
   try {
     // create new blog
@@ -22,11 +22,11 @@ async function create(req,res,next) {
   }
 };
 
-// PEOPLE SHOW ACTION
+// BLOG Detail ACTION
 async function detail(req,res,next) {
     try {
-        // send one person
-        res.stauts(200).json(await Blog.findById(req.params.id));
+        // send one Blog
+        res.status(200).json(await Blog.findById(req.params.id));
       } catch (err) {
         //send error
         res.status(400).json({error: err.message});
@@ -65,6 +65,6 @@ module.exports = {
 	index,
 	create,
 	getOne: detail,
-    delete: destroy,
-    update
+  delete: destroy,
+  update
 }
