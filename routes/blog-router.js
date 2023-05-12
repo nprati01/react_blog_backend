@@ -16,7 +16,7 @@ const blogCtrl = require('../controllers/blog-controller')
 //Blog INDEX ROUTE ie blog list
 router.get("/", blogCtrl.index)
 
-// router.use("/:id/comments", commentsRouter)
+
 
 // Blog CREATE ROUTE
 router.post("/", blogCtrl.create)

@@ -1,21 +1,23 @@
 const express = require('express')
-const { Blog } = require('../models')
+const { Comment } = require('../models')
+
+
 
 async function index(req,res,next) {
 	try {
-    // get all blogs
-    res.status(200).json(await Blog.find());
+    // get all comments
+    res.status(200).json(await Comment.find());
   } catch (err) {
     //send error
     res.status(400).json({error: err.message});
   }
 };
 
-// BLOG CREATE ACTION
+// Comment CREATE ACTION
 async function create(req,res,next) {
   try {
     // create new blog
-    res.status(201).json(await Blog.create(req.body));
+    res.status(201).json(await Comment.create(req.body));
   } catch (err) {
     //send error
     res.status(400).json({error: err.message});
@@ -26,7 +28,7 @@ async function create(req,res,next) {
 async function detail(req,res,next) {
     try {
         // send one Blog
-        res.status(200).json(await Blog.findById(req.params.id));
+        res.status(200).json(await Comment.findById(req.params.id));
       } catch (err) {
         //send error
         res.status(400).json({error: err.message});
@@ -39,7 +41,7 @@ async function detail(req,res,next) {
 async function destroy(req,res,next) {
     try {
       // delete Blog by ID
-      res.status(200).json(await Blog.findByIdAndRemove(req.params.id));
+      res.status(200).json(await Comment.findByIdAndRemove(req.params.id));
     } catch (err) {
       //send error
       res.status(400).json({error: err.message});
@@ -51,7 +53,7 @@ async function update(req,res,next) {
     try {
       // update Blog by ID, provide the form data, and return the updated document.
       res.status(200).json(
-        await Blog.findByIdAndUpdate(req.params.id, req.body, {new:true})
+        await Comment.findByIdAndUpdate(req.params.id, req.body, {new:true})
       );
     } catch (err) {
       //send error
