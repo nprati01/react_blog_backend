@@ -7,7 +7,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 const blogRouter = require('./routes/blog-router')
-const commentsRouter = require('./routes/comment-router')
+
 
 
 
@@ -28,7 +28,7 @@ app.use(morgan("dev"))
 
 // ROUTER MIDDLEWARE
 app.use('/blogs', blogRouter)
-app.use('/comments', commentsRouter)
+
 
 
 
